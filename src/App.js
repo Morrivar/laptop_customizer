@@ -1,34 +1,33 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 // Normalizes string as a slug - a string that is safe to use
 // in both URLs and html attributes
 
-import FeaturesList from "./FeaturesList";
-import Summary from "./Summary";
-import Total from "./Total";
+import Header from './Header';
+import Main from './Main';
 
-import "./App.css";
+import './App.css';
 
 // This object will allow us to
 // easily convert numbers into US dollar values
-export const USCurrencyFormat = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
+export const USCurrencyFormat = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
 });
 
 class App extends Component {
   state = {
     selected: {
       Processor: {
-        name: "17th Generation Intel Core HB (7 Core with donut spare)",
+        name: '17th Generation Intel Core HB (7 Core with donut spare)',
         cost: 700,
       },
-      "Operating System": {
-        name: "Ubuntu Linux 16.04",
+      'Operating System': {
+        name: 'Ubuntu Linux 16.04',
         cost: 200,
       },
-      "Video Card": {
-        name: "Toyota Corolla 1.5v",
+      'Video Card': {
+        name: 'Toyota Corolla 1.5v',
         cost: 1150.98,
       },
       Display: {
@@ -49,24 +48,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <h1>ELF Computing | Laptops</h1>
-        </header>
-        <main>
-          <form className="main__form">
-            <h2>Customize your laptop</h2>
-            <FeaturesList
-              features={this.props.features}
-              selected={Object.assign({}, this.state.selected)}
-              updateFeature={this.updateFeature}
-            />
-          </form>
-          <section className="main__summary">
-            <h2>Your cart</h2>
-            <Summary selected={Object.assign({}, this.state.selected)} />
-            <Total selected={Object.assign({}, this.state.selected)} />
-          </section>
-        </main>
+        <Header />
+        <Main
+          features={this.props.features}
+          selected={Object.assign({}, this.state.selected)}
+          updateFeature={this.updateFeature}
+        />
       </div>
     );
   }
